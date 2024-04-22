@@ -1,0 +1,24 @@
+<div class="templatemo-content-container">
+    <!-- <button class="btn btn-success mb-3" (click)="AjouterRepas()">Ajouter Plat</button> -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>typeRepas</th>
+                
+                <th>dateRepas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of repas">
+                <td>{{ item.typeRepas }}</td>
+               <td>{{ item.dateRepas }}</td>
+                <td>
+                    <!-- <button (click)="modifierRepas(item.idPlat)" class="btn btn-info">Edit</button> -->
+
+                    <button (click)="delete(item.id)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

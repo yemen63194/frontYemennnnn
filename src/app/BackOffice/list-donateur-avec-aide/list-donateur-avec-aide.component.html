@@ -1,0 +1,81 @@
+<div class="templatemo-content-container">
+  <div *ngIf="donneesDonateurs">
+    <!-- Ajouter un menu déroulant de filtrage -->
+    <label for="typeAide">Filtrer par type d'aide:</label>
+    <select id="typeAide" [(ngModel)]="typeAideFiltre" (change)="changerTypeAide()">
+      <option value="MONEY">Argent</option>
+      <option value="CLOTHES">Vêtements</option>
+      <option value="VOLUNTEER_HOURS">Heures de bénévolat</option>
+      <option value="MEDICAMENT">Médicaments</option>
+      <option value="ADDITIONAL_SPACE">Espace supplémentaire</option>
+    </select>
+    <!-- Fin du menu déroulant de filtrage -->
+
+    <h2>Liste des donateurs</h2>
+    <table class="table table-striped table-bordered">
+      <!-- En-têtes de tableau -->
+      <thead class="table-light">
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          
+          <!-- Champs spécifiques à chaque type d'aide -->
+          <ng-container *ngIf="typeAideFiltre === 'MONEY'">
+            <th>Montant total</th>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'CLOTHES'">
+            <th>Quantité de vêtements</th>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'MEDICAMENT'">
+            <th>Quantité de médicaments</th>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'VOLUNTEER_HOURS'">
+            <th>Durée de bénévolat</th>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'ADDITIONAL_SPACE'">
+            <th>Surface de l'espace</th>
+            <th>Adresse de l'espace</th>
+            <th>Carte de l'emplacement</th>
+          </ng-container>
+          <!-- Fin des champs spécifiques -->
+          <th>Shelters Bénéficiaire</th>
+          <th>Badge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Lignes de tableau pour chaque donateur -->
+        <tr *ngFor="let donnee of donneesDonateurs">
+          <td>{{ donnee.nom }}</td>
+          <td>{{ donnee.prenom }}</td>
+          
+          <!-- Champs spécifiques à chaque type d'aide -->
+          <ng-container *ngIf="typeAideFiltre === 'MONEY'">
+            <td>{{ donnee.montantTotal }}</td>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'CLOTHES'">
+            <td>{{ donnee.quantiteTotaleVetements }}</td>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'MEDICAMENT'">
+            <td>{{ donnee.quantiteTotaleMedicaments }}</td>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'VOLUNTEER_HOURS'">
+            <td>{{ donnee.dureeTotaleHeuresVolontariat }}</td>
+          </ng-container>
+          <ng-container *ngIf="typeAideFiltre === 'ADDITIONAL_SPACE'">
+            <td>{{ donnee.surfaceTotaleEspace }}</td>
+            <td>{{ donnee.adresseEspace }}</td>
+            <td>
+              <iframe width="300" height="200" [src]="genererURLCarte(donnee.adresseEspace)" allowfullscreen></iframe>
+            </td>
+          </ng-container>
+          <td>{{ donnee.shelters }}</td>
+   <td>
+  <span class="badge {{ determinerTypeBadge(typeAideFiltre, donnee) }}-badge">
+    {{ determinerTypeBadge(typeAideFiltre, donnee) }}
+  </span>
+</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Modifier la cause du refuge</h2>
+    <form (ngSubmit)="update()" #updateCauseForm="ngForm">
+      <div class="form-group">
+        <label for="cause">Cause</label>
+        <input type="text" class="form-control" id="cause" name="cause" [(ngModel)]="shelter.cause" required>
+      </div>
+      <div class="form-group">
+        <label for="imageCause">Image de la cause</label>
+        <input type="text" class="form-control" id="imageCause" name="imageCause" [(ngModel)]="shelter.imageCause">
+      </div>
+      <div class="form-group">
+        <label for="objectifFinancier">Objectif financier</label>
+        <input type="number" class="form-control" id="objectifFinancier" name="objectifFinancier" [(ngModel)]="shelter.objectifFinancier" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+  </div>
+  

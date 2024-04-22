@@ -1,0 +1,19 @@
+<div class="templatemo-content-container">
+    <div class="row mt-5">
+        <div class="col-3">
+            <input [(ngModel)]="aide.description" type="text" class="form-control m-1" placeholder="Description">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="aide.duree" type="text" class="form-control m-1" placeholder="Durée">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="aide.montant" type="number" class="form-control m-1" placeholder="Durée">
+        </div> 
+        <div class="col-3">
+            <input [(ngModel)]="aide.typeAide" type="text" class="form-control m-1" placeholder="Type">
+        </div>
+        <div class="col-3">
+            <button (click)="update()" class="btn btn-primary form-control m-1 text-light">Update</button>
+        </div>  
+    </div>
+</div>

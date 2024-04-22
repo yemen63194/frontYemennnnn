@@ -1,0 +1,24 @@
+    <button style="margin-right: 50px "class="btn btn-success mb-3" (click)="buttonAjouter()">Ajouter Maladie</button>
+<br><br>
+<div style="margin: 30;">
+  <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+</div>
+<div class="panel-body d-flex justify-content-center mb-3"> <!-- Utilisation des classes pour centrer l'input -->
+  <input type="text" [(ngModel)]="searchText" placeholder="Search..." /> <!-- Bind le ngModel à une variable searchText -->
+</div>
+        <div *ngFor="let maladie of maladies | filter: searchText| paginate: { itemsPerPage: pageSize, currentPage: page }" class="col-md-4 mb-3">
+          <div class="custom-block custom-block-full">
+            <div class="custom-block-info">
+              <h1>Malade :</h1>
+              <h3 class="mb-2">
+                <a>{{ maladie.nom }}</a>
+              </h3>
+              <div style="margin-left: 50px "> <!-- Ajoute une marge entre les boutons -->
+                <button (click)="buttonModifier(maladie.id)" class="btn btn-info">Edit</button>
+                <button style="margin-left: 50px " (click)="delete(maladie.id)" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      

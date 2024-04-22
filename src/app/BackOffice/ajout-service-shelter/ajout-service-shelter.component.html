@@ -1,0 +1,21 @@
+<div class="templatemo-content-container">
+    <div class="row mt-5">
+        <div class="col-3">
+            <input [(ngModel)]="service.nomService" type="text" class="form-control m-1" placeholder="Nom du service">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="service.description" type="text" class="form-control m-1" placeholder="Description">
+        </div>
+        
+        <div class="col-3">
+            <select [(ngModel)]="service.typeService" class="form-control m-1">
+                <option value="MEDICAL_CARE">"MEDICAL CARE</option>
+                <option value="PSYCHOLOGICAL_COUNSELING">PSYCHOLOGICAL COUNSELING</option>
+                <option value="FOOD_SERVICES">FOOD SERVICES</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <button (click)="ajout()" class="btn btn-primary form-control m-1 text-light">Créer</button>
+        </div>  
+    </div>
+</div>

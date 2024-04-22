@@ -1,0 +1,43 @@
+<div class="templatemo-content-container">
+    <br>
+    <div class="file-input">
+         <button class="custom-button" (click)="Ajouter()">Ajouter Food</button>
+    
+
+      </div>
+   
+      
+      
+    <div class="panel panel-default">
+        <div class="panel-heading">Foods</div>
+        <div class="panel-body">
+            <div class="panel-body d-flex justify-content-center mb-3"> <!-- Utilisation des classes pour centrer l'input -->
+                <input type="text" [(ngModel)]="searchText" placeholder="Search..." /> <!-- Bind le ngModel à une variable searchTextFood -->
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom Ingredient</th>
+                        <th>Calorie</th>
+                        <th>Date Ajout</th>
+                        <th>Quantité</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let food of foods | filter: searchText | paginate: { itemsPerPage: pageSize, currentPage: page }">
+                        <td>{{ food.nomIngredient }}</td>
+                        <td>{{ food.calorie }}</td>
+                        <td>{{ food.dateAjout }}</td>
+                        <td>{{ food.quantite }}</td>
+                        <td>
+                            <button (click)="modifierM(food.idIngredient)" class="btn btn-info">Edit</button>
+                            <button (click)="delete(food.idIngredient)" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>

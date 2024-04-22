@@ -1,0 +1,70 @@
+<div class="card" >
+  <!-- <app-card-plat [id]="item.idPlat" image="asset('..\..\Picture1.png')"  [desc]="item.descPlat" [nom]="item.nomPlat" (addPlatToList)="fonctionAjouterPlatToRepas($event)"></app-card-plat> -->
+  <div id="container" [ngClass]="{'selectedCard':selected}">  
+
+      <!-- Start  Product details -->
+        <div class="product-details">
+          
+          <!--  Product Name -->
+        <h1>{{plat.nom}} </h1>
+     
+          
+        
+      <!-- The most important information about the product -->
+          <p class="information">{{plat.descPlat}}</p>
+      
+          
+          
+      <!--    Control -->
+      <div class="control">
+        
+      <!-- Start Button buying -->
+        <button class="btn">
+      <!--    the Price -->
+         <span class="price">{{plat.prixPlat}} DT</span>
+      <!--    shopping cart icon-->
+         <!-- <span class="shopping-cart"><i class="fa fa-shopping-cart" ></i></span> -->
+      <!--    Buy Now / ADD to Cart-->
+         <span class="buy" (click)="addPlat()">Add To Repas</span>
+        </button>
+        <div style="margin: 1px;">
+
+          <button style="margin: 1px;" class="btn" class="btn btn-like" (click)="like()"><span class="buy">{{plat.likePlat}} Like</span></button>
+          
+          <button   class="btn" class="btn btn-dislike" (click)="dislike()" ><span class="buy">{{ plat.dislikePlat }} Dislike</span></button>
+        </div>
+  
+        <!-- End Button buying -->
+        
+      </div>
+      
+    
+      </div>
+        
+      <!--  End Product details   -->
+        
+        
+        
+      <!--  Start product image & Information -->
+        
+      <div class="product-image">
+        
+        <img [src]="plat.image" alt="" >
+        
+      <!--  product Information-->
+      <div class="info">
+        <h2>{{plat.desc}}</h2>
+        <ul>
+          <li *ngFor= "let ing of plat.nomIngredients"><strong>{{ing}} </strong></li>
+          
+        </ul>
+      </div>
+      </div>
+      <!--  End product image  -->
+      
+      
+      </div>
+      <!-- <button (click)="modifierPlat(item.idPlat)" class="btn btn-info">Edit</button>
+      <button (click)="delete(item.idPlat)" class="btn btn-danger">Delete</button> -->
+
+</div>

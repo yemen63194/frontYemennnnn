@@ -1,0 +1,28 @@
+<form>
+    <div class="form-group">
+      <label for="nomEtab">nomEtab</label>
+      <input type="text" class="form-control"   [(ngModel)]="etab.nomEtab" [ngModelOptions]="{standalone: true}" placeholder="nomEtab">
+    </div>
+    <div class="form-group">
+      <label for="numFixe">numFixe</label>
+      <input type="text" class="form-control" [(ngModel)]="etab.numFixe" [ngModelOptions]="{standalone: true}"  placeholder="numFixe">
+    </div>
+    <div class="form-group">
+        <label for="adresse">adresse</label>
+        <input type="text" class="form-control"   [(ngModel)]="etab.adresse" [ngModelOptions]="{standalone: true}" placeholder="adresse">
+      </div>
+      <div class="form-group">
+        <label for="typeEtab">typeEtab</label>
+        <input type="text" class="form-control"  [(ngModel)]="etab.typeEtab" [ngModelOptions]="{standalone: true}" placeholder="typeEtab">
+      </div>
+      <div class="form-group">
+        <label for="nbLits">nbLits</label>
+        <input type="text" class="form-control" [(ngModel)]="etab.nbLits" [ngModelOptions]="{standalone: true}" placeholder="nbLits">
+      </div>
+      <div class="form-group">
+        <label for="prixNuit">prixNuit</label>
+        <input type="number" class="form-control"  [(ngModel)]="etab.prixNuit" [ngModelOptions]="{standalone: true}" placeholder="prixNuit">
+      </div>
+
+    <button type="submit" class="btn btn-primary" (click)="ajouterEtablissement()">Ajouter</button>
+  </form>

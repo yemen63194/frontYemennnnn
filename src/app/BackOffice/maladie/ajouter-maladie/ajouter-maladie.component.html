@@ -1,0 +1,15 @@
+<div class="templatemo-content-container">
+  <div class="panel panel-default">
+      <div class="panel-heading">Ajouter Malade</div>
+      <div class="panel-body">
+          <form (submit)="ajouterMaladie()">
+              <div class="form-group">
+                  <label for="nomEtab">Nom Malade</label>
+                  <input type="text" class="form-control" [(ngModel)]="maladie.nom" [ngModelOptions]="{standalone: true}" placeholder="nom Malade">
+              </div>
+  
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+          </form>
+      </div>
+  </div>
+</div>

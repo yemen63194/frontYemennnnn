@@ -1,0 +1,28 @@
+<div class="templatemo-content-container">
+    <button class="btn btn-success mb-3" routerLink="/admin/ajoutAide">Ajouter un aide</button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Durée</th>
+                <th>Montant</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of aides">
+                <td>{{ item.description }}</td>
+                <td>{{ item.duree }}</td>
+                <td>{{ item.montant }}</td>
+                <td>{{ item.typeAide }}</td>
+                <td>
+                    <button [routerLink]="'/admin/editAide/' + item.idAide" class="btn btn-info">Edit</button>
+
+                    <button (click)="delete(item.idAide)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

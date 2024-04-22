@@ -1,0 +1,25 @@
+<div class="templatemo-content-container">
+  <form>
+    <div class="form-group">
+      <label for="shelter">Sélectionner un Shelter pour l'aider</label>
+      <select class="form-control" id="shelter" name="shelter" [(ngModel)]="selectedShelterId" (change)="onShelterSelectionChange($event)" required>
+          <option *ngFor="let shelter of shelters" [value]="shelter.idShelter">{{ shelter.nomShelter }}</option>
+      </select>
+  </div>
+    <div class="mb-3">
+      <label for="cause" class="form-label">Cause</label>
+      <input [(ngModel)]="causeData.cause" type="text" class="form-control" id="cause" name="cause">
+    </div>
+    <div class="mb-3">
+      <label for="imageCause" class="form-label">Image de la cause</label>
+      <input [(ngModel)]="causeData.imageCause" type="text" class="form-control" id="imageCause" name="imageCause">
+    </div>
+    <div class="mb-3">
+      <label for="objectifFinancier" class="form-label">Objectif financier</label>
+      <input [(ngModel)]="causeData.objectifFinancier" type="number" class="form-control" id="objectifFinancier" name="objectifFinancier">
+    </div>
+    <button (click)="addCause()" type="button" class="btn btn-primary">Créer</button>
+  </form>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+<div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>

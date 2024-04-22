@@ -1,0 +1,23 @@
+.gold-badge {
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+}
+
+.silver-badge {
+  background-color: silver;
+  color: black;
+  font-weight: bold;
+}
+
+.bronze-badge {
+  background-color: bronze;
+  color: white;
+  font-weight: bold;
+}
+
+.best-badge {
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+}

@@ -1,0 +1,8 @@
+/* flash-messages.component.css */
+.flash-message {
+    background-color: #ffd700; /* Couleur de fond jaune */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 10px; /* Marge en bas pour séparer les messages */
+    border: 1px solid #000; /* Bordure noire */
+  }
+  

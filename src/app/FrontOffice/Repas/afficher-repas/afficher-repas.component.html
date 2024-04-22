@@ -1,0 +1,94 @@
+
+<mat-tab-group>
+    <mat-tab label="PETIT DEJEUNER">
+        <div>
+            <!-- Afficher les repas -->
+            <div class="p-4">Entrée :</div>
+            <div *ngFor="let plat of breakFastPlats; let i = index">
+                <app-card-plat *ngIf="plat.typePlat === 'Entree'" [selected]="currentRepas.entree?.idPlat===plat.idPlat" [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+            <div class="p-4">Plat principale :</div>
+            <div *ngFor="let plat of breakFastPlats; let i = index">
+                <app-card-plat *ngIf="plat.typePlat === 'Principale'" [selected]="currentRepas.principale?.idPlat===plat.idPlat"[id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+            <div class="p-4">Dessert :</div>
+            <div *ngFor="let plat of breakFastPlats; let i = index">
+                <app-card-plat *ngIf="plat.typePlat === 'Dessert'" [selected]="currentRepas.dessert?.idPlat===plat.idPlat" [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+        </div>
+        <div>
+            <button (click)="validateSelection()" type="button" class="btn btn-primary"
+                [disabled]="timeFor !== 'PETIT_DEJEUNER'">
+                Valider la Sélection
+            </button>
+        </div>
+    </mat-tab>
+    <mat-tab label="DEJEUNER">
+        <div>
+            <!-- Afficher les repas -->
+            <div class="p-4">Entrée :</div>
+            <div *ngFor="let plat of lunchPlats; let i = index">
+
+                    <app-card-plat  *ngIf="plat.typePlat === 'Entree'" [selected]="currentRepas.entree?.idPlat===plat.idPlat"  [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+            <div class="p-4">Plat principale :</div>
+            <div *ngFor="let plat of lunchPlats; let i = index">
+                <app-card-plat  *ngIf="plat.typePlat === 'Principale'" [selected]="currentRepas.principale?.idPlat===plat.idPlat" [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+            <div class="p-4">Dessert :</div>
+            <div *ngFor="let plat of lunchPlats; let i = index">
+                <app-card-plat *ngIf="plat.typePlat === 'Dessert'" [selected]="currentRepas.dessert"[id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+        </div>
+
+        <div>
+            <button (click)="validateSelection()" type="button" class="btn btn-primary"
+                [disabled]="timeFor !== 'DEJEUNER'">
+                Valider la Sélection
+            </button>
+        </div>
+    </mat-tab>
+    <mat-tab label="DINER">
+        <div>
+            <!-- Afficher les repas -->
+            <div class="p-4">Entrée :</div>
+            <div *ngFor="let plat of dinnerPlats; let i = index">
+                <app-card-plat *ngIf="plat.typePlat === 'Entree'" [selected]="currentRepas.entree?.idPlat===plat.idPlat" [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+            <div class="p-4">Plat principale :</div>
+            <div *ngFor="let plat of dinnerPlats; let i = index">
+                <app-card-plat  *ngIf="plat.typePlat === 'Principale'" [selected]="currentRepas.principale?.idPlat===plat.idPlat"  [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+            <div class="p-4">Dessert :</div>
+            <div *ngFor="let plat of dinnerPlats; let i = index">
+                <app-card-plat *ngIf="plat.typePlat === 'Dessert'" [selected]="currentRepas.dessert?.idPlat===plat.idPlat" [id]="plat.idPlat" [plat]="plat"
+                    (addPlatToList)="addPlatToRepas($event)" (likePlat)="likePlat($event)"
+                    (dislikePlat)="dislikePlat($event)" />
+            </div>
+        </div>
+
+        <div>
+            <button (click)="validateSelection()" type="button" class="btn btn-primary"
+                [disabled]="timeFor !== 'DINER'">
+                Valider la Sélection
+            </button>
+        </div>
+    </mat-tab>
+</mat-tab-group>

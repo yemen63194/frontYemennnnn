@@ -1,0 +1,50 @@
+
+<div class="templatemo-content-container">
+    <div class="d-flex justify-content-end align-items-center mb-3">
+        <form class="templatemo-search-form" role="search">
+            <div class="input-group ml-auto">
+                <button type="submit" class="fa fa-search"></button>
+                <input type="text" class="form-control" name="srch-term" id="srch-term" placeholder="Recherche" [(ngModel)]="searchTerm" (input)="filterShelters()">           
+            </div>
+        </form>
+    </div>
+    <!-- <button class="btn btn-success mb-3" (click)="AjouterPlat()">Ajouter un shelter</button> -->
+    <button class="btn btn-success mb-3" routerLink="/admin/ajoutShelter" style="background-color: #28a745; border-color: #28a745;">Ajouter un shelter</button>
+    <button class="btn btn-success mb-3" routerLink="/admin/addCause" style="background-color: #2a6037; border-color: #7eb98c;">Ajouter une demande d'aide</button>
+    <div class="panel panel-default">
+        <div class="panel-heading">Shelters</div>
+        <div class="panel-body">
+            <div class="panel-body d-flex justify-content-center mb-3">
+                <input type="text" [(ngModel)]="searchTerm" placeholder="Recherche..." (input)="filterShelters()" />
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Capacité</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Téléphone</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of filteredShelters">
+                        <td>{{ item.nomShelter }}</td>
+                        <td>{{ item.capaciteShelter }}</td>
+                        <td>{{ item.location }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.tel }}</td>
+                        <td><img [src]="item.image" alt="{{ item.nomShelter }}" style="max-width: 100px; max-height: 100px;"></td>
+                        <td>
+                            <button [routerLink]="'/admin/editShelter/' + item.idShelter" class="btn btn-primary">Edit</button>
+                            <button (click)="delete(item.idShelter)" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls> -->
+    </div>
+</div>

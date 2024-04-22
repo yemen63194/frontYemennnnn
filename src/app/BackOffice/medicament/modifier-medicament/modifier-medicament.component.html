@@ -1,0 +1,29 @@
+<form>
+    <div class="form-group">
+      <label for="nomEtab">nom Medicament</label>
+      <input type="text" class="form-control"   [(ngModel)]="med.nomMed" [ngModelOptions]="{standalone: true}" placeholder="nom Medicament">
+    </div>
+    <div class="form-group">
+      <label for="numFixe">Description</label>
+      <input type="text" class="form-control" [(ngModel)]="med.descMed" [ngModelOptions]="{standalone: true}"  placeholder="Description">
+    </div>
+    <div class="form-group">
+      <label for="numFixe">Image</label>
+      <input type="text" class="form-control" [(ngModel)]="med.image" [ngModelOptions]="{standalone: true}"  placeholder="Image">
+    </div>
+    <div class="form-group">
+        <label for="adresse">Délai</label>
+        <input type="text" class="form-control"   [(ngModel)]="med.dateMed" [ngModelOptions]="{standalone: true}" placeholder="Délai">
+      </div>
+      <div class="form-group">
+        <label for="typeEtab">Categorie Medicament</label>
+        <input type="text" class="form-control"  [(ngModel)]="med.CatMedicament" [ngModelOptions]="{standalone: true}" placeholder="Categorie Medicament">
+      </div>
+     
+      <div class="form-group">
+        <label for="prixNuit">Prix Medicament</label>
+        <input type="number" class="form-control"  [(ngModel)]="med.prixMed" [ngModelOptions]="{standalone: true}" placeholder="Prix Medicament">
+      </div>
+
+    <button type="submit" class="btn btn-primary" (click)="modifierMedicament()">Update</button>
+  </form>

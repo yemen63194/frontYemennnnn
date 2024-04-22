@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Ajouter un congé</title>
+</head>
+<body>
+
+<section class="get-in-touch">
+   <h1 class="title">Ajouter un congé</h1>
+   <form class="contact-form row" (ngSubmit)="ajouterConge()" #congeForm="ngForm">
+      <div class="form-field col-lg-6">
+         <input id="description" class="input-text js-input" type="text" name="description" [(ngModel)]="counge.description" required>
+         <label class="label" for="description">Description :</label>
+      </div>
+      <div class="form-field col-lg-6">
+         <input id="dateDebut" class="input-text js-input" type="date" name="dateDebut" [(ngModel)]="counge.dateDebut" required>
+         <label class="label" for="dateDebut">Date de début :</label>
+      </div>
+      <div class="form-field col-lg-6">
+         <input id="dateFin" class="input-text js-input" type="date" name="dateFin" [(ngModel)]="counge.dateFin" required>
+         <label class="label" for="dateFin">Date de fin :</label>
+      </div>
+
+      
+      <div class="form-field col-lg-6">
+         <select id="typeCounger" class="input-text js-input" name="typeCounger" [(ngModel)]="counge.typeCounger" required>
+            <option value="COUGER_PARENTALE">Congé parentale</option>
+            <option value="COUNGER_MATERNITE">Congé maternité</option>
+            <option value="COUNGER_SABBATIQUE">Congé sabbatique</option>
+            <option value="COUNGER_MALADIE">Congé maladie</option>
+         </select>
+         <label class="label" for="typeCounger">Type de congé :</label>
+      </div>
+      <div class="form-field col-lg-12">
+        <button class="submit-btn" type="submit">Ajouter</button>
+        <!-- Ajoutez une classe 'btn-margin' pour définir une marge -->
+        <button type="submit" class="submit-btn btn btn-primary btn-margin" [routerLink]="['/FrontlisteCounges']">Retour</button>
+    </div>
+   </form>
+</section>
+<ng-toast [style]="{width:'300px'}"></ng-toast>
+<button (click)="showInfo()">Afficher un toast</button>
+
+
+
+</body>
+</html>

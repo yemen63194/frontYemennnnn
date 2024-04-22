@@ -1,0 +1,29 @@
+<div class="templatemo-content-container">
+    <div class="row mt-5">
+      <div class="col-3">
+        <input [(ngModel)]="service.nomService" type="text" class="form-control m-1" placeholder="Nom du service">
+      </div>
+      <div class="col-3">
+        <input [(ngModel)]="service.description" type="text" class="form-control m-1" placeholder="Description">
+      </div>
+      
+      <div class="col-3">
+        <select [(ngModel)]="service.typeService" class="form-control m-1">
+          <option value="" disabled selected>Choisir un type de service</option>
+          <option value="MEDICAL_CARE">Médical</option>
+          <option value="PSYCHOLOGICAL_COUNSELING">Conseil psychologique</option>
+          <option value="FOOD_SERVICES">Services alimentaires</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <select [(ngModel)]="selectedShelterId" class="form-control m-1">
+          <option value="0" disabled selected>Choisir un refuge</option>
+          <option *ngFor="let shelter of shelters" [value]="shelter.idShelter">{{ shelter.nomShelter }}</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <button (click)="ajout()" class="btn btn-primary form-control m-1 text-light">Créer</button>
+      </div>
+    </div>
+  </div>
+  

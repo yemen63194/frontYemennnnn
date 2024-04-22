@@ -1,0 +1,52 @@
+<form>
+    <div class="form-group">
+      <label for="nomEtab">nom Plat</label>
+      <input type="text" class="form-control"   [(ngModel)]="plats.nomPlat" [ngModelOptions]="{standalone: true}" placeholder="nom Plat">
+    </div>
+    <div class="form-group">
+      <label for="numFixe">Description</label>
+      <input type="text" class="form-control" [(ngModel)]="plats.descPlat" [ngModelOptions]="{standalone: true}"  placeholder="Description">
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <img [src]="plats.image" alt="Ancienne Image" style="width: 20%;height: 20%;" class="mr-2">
+        <input type="file" style="display: none;" #fileInput accept="image/*" (change)="onFileSelected($event)">
+  
+      </div>
+      <div>      <button type="button" class="btn btn-secondary" (click)="fileInput.click()">Modifier Image</button>
+  </div>
+    </div>
+
+    <!-- <mat-form-field class="form-group">
+      <input matInput [(ngModel)]="plats.datePlat" [ngModelOptions]="{ standalone: true }" [matDatepicker]="datepicker" placeholder="Sélectionner une date">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field> -->
+
+    <div class="form-group">
+
+      <select id="typeCounger" class="input-text js-input form-control" name="typeCounger" [(ngModel)]="plats.typeRepas" required>
+        <option value="PETIT_DEJEUNER">PETIT_DEJEUNER</option>
+        <option value="DEJEUNER">DEJEUNER</option>
+        <option value="DINER">DINER</option>
+        <option value="ALL">ALL</option>
+     </select>
+    </div>
+
+    <div class="form-group">
+
+      <select id="typeCounger" class="input-text js-input form-control" name="typeCounger" [(ngModel)]="plats.typePlat" required>
+        <option value="Entree">Entree</option>
+        <option value="Principale">Principale</option>
+        <option value="Dessert">Dessert</option>
+     </select>
+    </div>
+      <div class="form-group">
+        <label for="prixNuit">Prix Plat</label>
+        <input type="number" class="form-control"  [(ngModel)]="plats.prixPlat" [ngModelOptions]="{standalone: true}" placeholder="Prix Plat">
+      </div>
+
+
+    <button type="submit" class="btn btn-primary" (click)="modifierPlats()">Update</button>
+  </form>
+

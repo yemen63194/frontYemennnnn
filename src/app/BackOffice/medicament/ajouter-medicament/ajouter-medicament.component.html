@@ -1,0 +1,31 @@
+<form>
+    <div class="form-group">
+      <label for="nomEtab">nom</label>
+      <input type="text" class="form-control"   [(ngModel)]="med.nomMed" [ngModelOptions]="{standalone: true}" placeholder="nom">
+    </div>
+    <div class="form-group">
+      <label for="numFixe">Image</label>
+      <input type="text" class="form-control" [(ngModel)]="med.image" [ngModelOptions]="{standalone: true}"  placeholder="Image">
+    </div>
+    <div class="form-group">
+      <label for="numFixe">Description</label>
+      <input type="text" class="form-control" [(ngModel)]="med.DescMed" [ngModelOptions]="{standalone: true}"  placeholder="Description">
+    </div>
+    <div class="form-group">
+        <label for="adresse">Délai</label>
+        <input type="text" class="form-control"   [(ngModel)]="med.dateMed" [ngModelOptions]="{standalone: true}" placeholder="Délai">
+      </div>
+      <div class="form-group">
+        <label for="typePlat">Type plat</label>
+        <select class="form-control" [(ngModel)]="med.CatMedicament" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let type of CatMedicament" [value]="type">{{type}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="prixNuit">prix medicament</label>
+        <input type="number" class="form-control"  [(ngModel)]="med.prixMed" [ngModelOptions]="{standalone: true}" placeholder="prix medicament">
+      </div>
+
+    <button type="submit" class="btn btn-primary" (click)="ajouterMedicament()">Ajouter</button>
+  </form>

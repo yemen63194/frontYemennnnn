@@ -1,0 +1,26 @@
+<!-- services-modal.component.html -->
+
+<!-- Début du contenu du pop-up -->
+<div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">{{ data.shelter.nomShelter }} - Shelter Details</h2>
+    </div>
+    <div class="modal-body">
+      <p><strong>Location:</strong> {{ data.shelter.location }}</p>
+      <p><strong>Capacity:</strong> {{ data.shelter.capaciteShelter }}</p>
+      <p><strong>Description:</strong> {{ data.shelter.description }}</p>
+      <p><strong>Telephone:</strong> {{ data.shelter.tel }}</p>
+      <p><strong>Services:</strong></p>
+      <ul>
+        <li *ngFor="let service of data.services">
+          <span class="service-icon">⭐</span> <!-- Exemple d'icône pour représenter le début d'un service -->
+          {{ service.nomService }} - {{ service.description }} ({{ service.typeService }})
+        </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button mat-button class="close-button" (click)="onClose()">Close</button>
+    </div>
+  </div>
+  <!-- Fin du contenu du pop-up -->
+  

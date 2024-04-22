@@ -1,0 +1,40 @@
+<div class="templatemo-content-container">
+    <button class="btn btn-success mb-3" (click)="AjouterPlat()">Ajouter Plat</button>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Plats</div>
+        <div class="panel-body">
+            <div class="panel-body d-flex justify-content-center mb-3">
+                <input type="text" [(ngModel)]="searchText" placeholder="Search..." />
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom Plat</th>
+                        <th>Description Plat</th>
+                        <th>Prix Plat</th>
+                        <!-- <th>Date Plat</th> -->
+                        <th>Type Plat</th>
+                        <th>Type Repas</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let plat of plats | filter: searchText | paginate: { itemsPerPage: pageSize, currentPage: page }">
+                        <td>{{ plat.nomPlat }}</td>
+                        <td>{{ plat.descPlat }}</td>
+                        <td>{{ plat.prixPlat }}</td>
+                        <!-- <td>{{ plat.datePlat | date: 'dd MM yyyy' }}</td> -->
+                        <td>{{ plat.typePlat }}</td>
+                        <td>{{ plat.typeRepas }}</td>
+                        <td>
+                            <button (click)="modifierPlat(plat.idPlat)" class="btn btn-info">Edit</button>
+                            <button (click)="deleteT(plat.idPlat)" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>

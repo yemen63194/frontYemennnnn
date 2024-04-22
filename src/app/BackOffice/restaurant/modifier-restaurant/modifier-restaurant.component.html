@@ -1,0 +1,33 @@
+<form>
+    <div class="form-group">
+      <label for="nomEtab">nom Restaurant</label>
+      <input type="text" class="form-control"   [(ngModel)]="res.nomResto" [ngModelOptions]="{standalone: true}" placeholder="nom Medicament">
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <img [src]="res.image" alt="Ancienne Image" style="width: 20%;height: 20%;" class="mr-2">
+        <input type="file" style="display: none;" #fileInput accept="image/*" (change)="onFileSelected($event)">
+  
+      </div>
+      <div>      <button type="button" class="btn btn-secondary" (click)="fileInput.click()">Modifier Image</button>
+  </div>
+    </div>
+    <div class="form-group">
+      <label for="numFixe">Address</label>
+      <input type="text" class="form-control" [(ngModel)]="res.address" [ngModelOptions]="{standalone: true}"  placeholder="Image">
+    </div>
+      <div class="form-group">
+        <label for="adresse">Phone number</label>
+        <input type="text" class="form-control"   [(ngModel)]="res.tel" [ngModelOptions]="{standalone: true}" placeholder="Délai">
+      </div>
+      <div class="form-group">
+        <label for="etablissement">Établissement</label>
+        <select class="form-control" [(ngModel)]="res.idEtab" [ngModelOptions]="{standalone: true}">
+          <option value="" disabled selected [value]="res.idEtab">{{res.nomEtab}}</option>
+          <option *ngFor="let etablissement of etablissements" [value]="etablissement.idEtab" [selected]="etablissement.idEtab===res.idEtab">{{ etablissement.nomEtab }}</option>
+        </select>
+      </div>
+  
+      
+    <button type="submit" class="btn btn-primary" (click)=modifierRestaurant()>Update</button>
+  </form>

@@ -1,0 +1,31 @@
+
+<div class="templatemo-content-container">
+  <form>
+    <div class="mb-3">
+      <label for="nomShelter" class="form-label">Nom du shelter</label>
+      <input [(ngModel)]="shelter.nomShelter" type="text" class="form-control" id="nomShelter" name="nomShelter">
+    </div>
+    <div class="mb-3">
+      <label for="capaciteShelter" class="form-label">Capacité du shelter</label>
+      <input [(ngModel)]="shelter.capaciteShelter" type="number" class="form-control" id="capaciteShelter" name="capaciteShelter">
+    </div>
+    <div class="mb-3">
+      <label for="locationShelter" class="form-label">Location du shelter</label>
+      <input [(ngModel)]="shelter.location" type="text" class="form-control" id="locationShelter" name="locationShelter">
+    </div>
+    <div class="mb-3">
+      <label for="descriptionShelter" class="form-label">Description du shelter</label>
+      <input [(ngModel)]="shelter.description" type="text" class="form-control" id="descriptionShelter" name="descriptionShelter">
+    </div>
+    <div class="mb-3">
+      <label for="telShelter" class="form-label">Téléphone du shelter</label>
+      <input [(ngModel)]="shelter.tel" type="text" class="form-control" id="telShelter" name="telShelter">
+    </div>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)">
+    </div>
+   
+    <button (click)="ajout()" type="submit" class="btn btn-primary">Créer</button>
+  </form>
+</div>

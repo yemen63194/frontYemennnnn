@@ -1,0 +1,219 @@
+<div class="container" *ngIf="!authResponse.mfaEnabled">
+  <div class="success-message-panel" *ngIf="message">
+    <div class="success-icon">&#10004;</div>
+    <div class="success-message">{{message}}</div>
+  </div>
+
+  <h2>Register</h2>
+  <form (ngSubmit)="registerUser()">
+    <div class="form-group">
+      <label for="firstname">First name</label>
+      <input
+        id="firstname"
+        name="firstname"
+        required type="text"
+        [(ngModel)]="registerRequest.firstname"
+      >
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last name</label>
+      <input
+        id="lastname"
+        name="lastname"
+        required type="text"
+        [(ngModel)]="registerRequest.lastname"
+      >
+      
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        required type="text"
+        [(ngModel)]="registerRequest.email"
+      >
+  </div>
+  <label for="role" id="lb">Role</label>
+  <select id="role" name="role" [(ngModel)]="registerRequest.roles">
+    <option *ngFor="let role of roles" [value]="role" id="opt">{{ role }}</option>
+  </select>
+<!-- Champs spécifiques au rôle PATIENT -->
+
+
+<div class="form-group" *ngIf="isPatientRoleSelected">
+  <label for="typeePatient">Type Patient</label>
+  <select id="typeePatient" name="typeePatient" [(ngModel)]="registerRequest.typeePatient">
+    <option value="NORMAL">NORMAL</option>
+    <option value="URGENT">URGENT</option>
+    <option value="DECEDE">DECEDE</option>
+    
+  </select>
+</div>
+<div class="form-group" *ngIf="isPatientRoleSelected">
+  <label for="sexee">Sexe</label>
+  <select id="sexee" name="sexee" [(ngModel)]="registerRequest.sexee">
+    <option value="HOMME">HOMME</option>
+    <option value="FEMME">FEMME</option>
+  </select>
+</div>
+
+
+<div class="form-group" *ngIf="isPatientRoleSelected">
+  <label for="archiverr">Archivage</label>
+  <input id="archiverr" name="archiverr" type="checkbox" [(ngModel)]="registerRequest.archiverr">
+</div>
+
+<div class="form-group" *ngIf="isPatientRoleSelected">
+  <label for="poidd">Poids</label>
+  <input id="poidd" name="poidd" type="number" [(ngModel)]="registerRequest.poidd">
+</div>
+
+<div class="form-group" *ngIf="isPatientRoleSelected">
+  <label for="longueurr">Longueur</label>
+  <input id="longueurr" name="longueurr" type="number" [(ngModel)]="registerRequest.longueurr">
+</div>
+
+<div class="form-group" *ngIf="isPatientRoleSelected">
+  <label for="dateeDeNaissance">Date de naissance</label>
+  <input id="dateeDeNaissance" name="dateeDeNaissance" type="date" [(ngModel)]="registerRequest.dateeDeNaissance">
+</div>
+
+<!-- et ainsi de suite pour les autres attributs spécifiques à d'autres rôles -->
+<!-- Champs spécifiques au rôle MEDECIN -->
+
+<div class="form-group" *ngIf="isMEDECINRoleSelected">
+  <label for="specialitee">specialitee</label>
+  <select id="specialitee" name="specialitee" [(ngModel)]="registerRequest.specialitee">
+    <option value="PSYCHIATRIE">PSYCHIATRIE</option>
+    <option value="PEDIATRIE">PEDIATRIE</option>
+    <option value="CARDIOLOGIE">CARDIOLOGIE</option>
+    <option value="DERMATOLOGIE">DERMATOLOGIE</option>
+    <option value="ANESTHESIOLOGIE">ANESTHESIOLOGIE</option>
+    <option value="CHIRURGIE">CHIRURGIE</option>
+    <option value="GENERAL">GENERAL</option>
+  </select>
+</div>
+
+<div class="form-group" *ngIf="isMEDECINRoleSelected">
+  <label for="disponibleeee">disponible</label>
+  <input id="disponibleeee" name="disponibleeee" type="checkbox" [(ngModel)]="registerRequest.disponibleeee">
+</div>
+
+
+
+<!-- et ainsi de suite pour les autres attributs spécifiques à d'autres rôles -->
+<!-- Champs spécifiques au rôle Cuisiner -->
+
+
+<div class="form-group" *ngIf="isCuisinerRoleSelected">
+  <label for="dateAjout">Date </label>
+  <input id="dateAjout" name="dateAjout" type="date" [(ngModel)]="registerRequest.dateAjoutee">
+</div>
+
+<div class="form-group" *ngIf="isCuisinerRoleSelected">
+  <label for="salaire">salaire</label>
+  <input id="salaire" name="salaire" type="number" [(ngModel)]="registerRequest.salaire">
+</div>
+<div class="form-group" *ngIf="isCuisinerRoleSelected">
+  <label for="sexeeee">Sexe</label>
+  <select id="sexeeee" name="sexeeee" [(ngModel)]="registerRequest.sexeeee">
+    <option value="HOMME">HOMME</option>
+    <option value="FEMME">FEMME</option>
+  </select>
+</div>
+<div class="form-group" *ngIf="isCuisinerRoleSelected">
+  <label for="disponiblee">disponiblee</label>
+  <input id="disponiblee" name="disponiblee" type="checkbox" [(ngModel)]="registerRequest.disponiblee">
+</div>
+
+
+
+<!-- et ainsi de suite pour les autres attributs spécifiques à d'autres rôles -->
+<!-- Champs spécifiques au rôle Homlesss -->
+
+<div class="form-group" *ngIf="isHOMELESSRoleSelected">
+  <label for="age">age</label>
+  <input id="age" name="age" type="number" [(ngModel)]="registerRequest.age">
+</div>
+
+<div class="form-group" *ngIf="isHOMELESSRoleSelected">
+  <label for="situationMedicalee">situation Medicale</label>
+  <input id="situationMedicalee" name="situationMedicalee" type="text" [(ngModel)]="registerRequest.situationMedicalee">
+</div>
+<div class="form-group" *ngIf="isHOMELESSRoleSelected">
+  <label for="situationSocialee">situation Sociale</label>
+  <input id="situationSocialee" name="situationSocialee" type="text" [(ngModel)]="registerRequest.situationSocialee">
+</div>
+<div class="form-group" *ngIf="isHOMELESSRoleSelected">
+  <label for="besoinsSpecifiquess">besoins Specifiques</label>
+  <input id="besoinsSpecifiquess" name="besoinsSpecifiquess" type="text" [(ngModel)]="registerRequest.besoinsSpecifiquess">
+</div>
+
+<div class="form-group" *ngIf="isHOMELESSRoleSelected">
+  <label for="localisationActuellee">localisation Actuelle</label>
+  <input id="localisationActuellee" name="localisationActuellee" type="text" [(ngModel)]="registerRequest.localisationActuellee">
+</div>
+
+<!-- et ainsi de suite pour les autres attributs spécifiques à d'autres rôles -->
+<!-- Champs spécifiques au rôle Donateur -->
+
+
+<div class="form-group" *ngIf="isDONATEURoleSelected">
+  <label for="ntelephone">nt elephone</label>
+  <input id="ntelephone" name="ntelephone" type="text" [(ngModel)]="registerRequest.ntelephone">
+</div>
+
+
+<!-- et ainsi de suite pour les autres attributs spécifiques à d'autres rôles -->
+
+    <div class="form-group" >
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        required type="password"
+        [(ngModel)]="registerRequest.passwd"
+      >
+    </div>
+    <div class="form-group">
+      <input
+        id="rememberMe"
+        name="rememberMe"
+        type="checkbox"
+        [(ngModel)]="registerRequest.mfaEnabled"
+      >
+      <label for="rememberMe">Enable 2FA (Two Factors Authentication)</label>
+    </div>
+    <button type="submit">Register</button>
+    <a routerLink="/login">Login</a>
+  </form>
+</div>
+
+<div class="container" *ngIf="authResponse.mfaEnabled">
+
+  <div class="success-message-panel" *ngIf="message">
+    <div class="success-icon">&#10004;</div>
+    <div class="success-message">{{message}}</div>
+  </div>
+
+  <h2>Set Up Two-Factor Authentication</h2>
+  <div class="qr-code">
+    <img [src]="authResponse.secretImageUri" alt="QR Code">
+  </div>
+  <div class="form-group">
+    <label for="validationCode">Enter 6 digits Validation Code Generated by the app</label>
+    <input
+      type="text"
+      id="validationCode"
+      name="validationCode"
+      required
+      [(ngModel)]="otpCode"
+    >
+  </div>
+  <button
+    type="button"
+    (click)="verifyTfa()"
+    [class.button-disabled]="otpCode.length < 6"
+  >Verify code</button>
+</div>

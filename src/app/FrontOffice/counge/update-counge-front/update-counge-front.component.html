@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Modifier un congé</title>
+</head>
+<body>
+
+
+<section class="get-in-touch">
+   <h1 class="title">Modifier le Coungie</h1>
+   <form class="contact-form row" (ngSubmit)="modifierEtablissement()">
+      <div class="form-field col-lg-6">
+         <label class="label" for="description">Description</label>
+         <input id="description" class="input-text js-input form-control" type="text" [(ngModel)]="etab.description" name="description">
+      </div>
+      <div class="form-field col-lg-6">
+         <label class="label" for="dateDebut">Date de début</label>
+         <input id="dateDebut" class="input-text js-input form-control" type="date" [(ngModel)]="etab.dateDebut" name="dateDebut">
+      </div>
+      <div class="form-field col-lg-6">
+         <label class="label" for="dateFin">Date de fin</label>
+         <input id="dateFin" class="input-text js-input form-control" type="date" [(ngModel)]="etab.dateFin" name="dateFin">
+      </div>
+      <div class="form-field col-lg-6">
+         <label class="label" for="typeCounger">Type Counger</label>
+         <select id="typeCounger" class="input-text js-input form-control" name="typeCounger" [(ngModel)]="etab.typeCounger" required>
+            <option value="COUGER_PARENTALE">Congé parentale</option>
+            <option value="COUNGER_MATERNITE">Congé maternité</option>
+            <option value="COUNGER_SABBATIQUE">Congé sabbatique</option>
+            <option value="COUNGER_MALADIE">Congé maladie</option>
+         </select>
+      </div>
+      <div class="form-field col-lg-12">
+         <button type="submit" class="submit-btn btn btn-primary btn-margint">Modifier</button>
+         
+         <button type="submit" class="submit-btn btn btn-primary btn-margin"[routerLink]="['/FrontlisteCounges']">Retour</button>
+
+      </div>
+   </form>
+</section>
+
+
+</body>
+</html>

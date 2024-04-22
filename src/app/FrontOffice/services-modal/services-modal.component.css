@@ -1,0 +1,50 @@
+/* services-modal.component.css */
+
+.modal-content {
+    background-color: #EBF5FF; 
+       padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    margin-bottom: 20px;
+  }
+  
+  .service-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .service-list li {
+    margin-bottom: 5px;
+  }
+  
+  .close-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    background-color: #0056b3;
+  }
+  .modal-title {
+    font-weight: bold;
+    font-size: 24px;
+    color: #333; /* Couleur de texte sombre pour un meilleur contraste */
+    margin-bottom: 20px; /* Espace en bas du titre */
+  }
+  .service-icon {
+    font-size: 20px;
+    margin-right: 5px; /* Espacement à droite de l'icône */
+    color: #ff9800; /* Couleur de l'icône */
+  }
+  

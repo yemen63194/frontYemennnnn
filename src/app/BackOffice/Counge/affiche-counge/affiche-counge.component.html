@@ -1,0 +1,41 @@
+<div class="templatemo-content-container">
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">Congés</div>
+        <div class="panel-body">
+            <div class="panel-body d-flex justify-content-center mb-3"> <!-- Utilisation des classes pour centrer l'input -->
+                <input type="text" [(ngModel)]="searchText" placeholder="Search..." /> <!-- Bind le ngModel à une variable searchText -->
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Date Début</th>
+                        <th>Date Fin</th>
+                        <th>État</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of counges | filter: searchText| paginate: { itemsPerPage: pageSize, currentPage: page }">
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.dateDebut }}</td>
+                        <td>{{ item.dateFin }}</td>
+                        <td>
+                            <span class="badge badge-info" *ngIf="item.etatCounger === 'EN_COUR'">En cours</span>
+                            <span class="badge badge-success" *ngIf="item.etatCounger === 'ACCEPTEE'">Acceptée</span>
+                            <span class="badge badge-danger" *ngIf="item.etatCounger === 'REFUSER'">Refusée</span>
+                        </td>
+                        <td>{{ item.typeCounger }}</td>
+                        <td>
+                            <button class="btn btn-link btn-lg custom-btn" (click)="updateCoungeEtat(item.id, 'ACCEPTEE')" title="Accepter le congé"><i class="bi bi-check-circle text-success"></i></button>
+                            <button class="btn btn-link btn-lg custom-btn" (click)="updateCoungeEtat(item.id, 'REFUSER')" title="Refuser le congé"><i class="bi bi-x-circle text-danger"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+    </div>
+</div>

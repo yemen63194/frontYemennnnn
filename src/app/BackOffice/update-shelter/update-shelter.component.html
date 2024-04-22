@@ -1,0 +1,34 @@
+<div class="templatemo-content-container">
+  <form>
+    <div class="mb-3">
+      <label for="nomShelter" class="form-label">Nom</label>
+      <input [(ngModel)]="shelter.nomShelter" name="nomShelter" type="text" class="form-control" id="nomShelter" placeholder="Nom">
+    </div>
+    <div class="mb-3">
+      <label for="capaciteShelter" class="form-label">Capacité</label>
+      <input [(ngModel)]="shelter.capaciteShelter" name="capaciteShelter" type="number" class="form-control" id="capaciteShelter" placeholder="Capacité">
+    </div>
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input [(ngModel)]="shelter.location" name="location" type="text" class="form-control" id="location" placeholder="Location">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input [(ngModel)]="shelter.description" name="description" type="text" class="form-control" id="description" placeholder="Description">
+    </div>
+    <div class="mb-3">
+      <label for="tel" class="form-label">Téléphone</label>
+      <input [(ngModel)]="shelter.tel" name="tel" type="text" class="form-control" id="tel" placeholder="Téléphone">
+    </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <img [src]="shelter.image" alt="Ancienne Image" style="width: 20%;height: 20%;" class="mr-2">
+        <input type="file" style="display: none;" #fileInput accept="image/*" (change)="onFileSelected($event)">
+            <button type="button" class="btn btn-secondary" (click)="fileInput.click()">Modifier Image</button>
+
+      </div> </div>
+    <div class="col-3">
+      <button (click)="update()" class="btn btn-primary">Update</button>
+    </div>
+    </form>
+</div>

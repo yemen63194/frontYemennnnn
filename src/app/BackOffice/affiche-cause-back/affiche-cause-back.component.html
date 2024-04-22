@@ -1,0 +1,65 @@
+<div class="templatemo-content-container">
+    <div class="d-flex justify-content-end align-items-center mb-3">
+        <form class="templatemo-search-form" role="search">
+            <div class="input-group ml-auto">
+                <button type="submit" class="fa fa-search"></button>
+            </div>
+        </form>
+    </div>
+    <button class="btn btn-success mb-3" routerLink="/admin/ajoutShelter" style="background-color: #28a745; border-color: #28a745;">Ajouter un shelter</button>
+    <button class="btn btn-success mb-3" routerLink="/admin/addCause" style="background-color: #2a6037; border-color: #7eb98c;">Ajouter une demande d'aide</button>
+    <h2>Causes Courantes</h2>
+    <table class="table table-striped table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Nom</th>
+                <th>Cause</th>
+                <th>Objectif Financier</th>
+                <th>Montant Total Aide</th>
+                <th>Progression</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let shelterDonation of shelterDonations">
+                <td>{{ shelterDonation.nomShelter }}</td>
+                <td>{{ shelterDonation.cause }}</td>
+                <td>{{ shelterDonation.objectifFinancier }}</td>
+                <td>{{ shelterDonation.montantTotalAide }}</td>
+                <td>{{ calculateProgress(shelterDonation) }}%</td>
+                <td>
+                    <button [routerLink]="['/admin/updateCause', shelterDonation.idShelter]" class="btn btn-primary">Modifier la cause</button>
+                    <button (click)="deleteShelter(shelterDonation.idShelter)" class="btn btn-danger" style="background-color: #dc3545; border-color: #dc3545;">Delete</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   
+
+
+    <h2>Our Realisations</h2>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Nom</th>
+            <th>Cause</th>
+            <th>Objectif Financier</th>
+            <th>Montant Total Aide</th>
+            <th>Progression</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let achievement of ourAchievements">
+            <td>{{ achievement.nomShelter }}</td>
+            <td>{{ achievement.cause }}</td>
+            <td>{{ achievement.objectifFinancier }}</td>
+            <td>{{ achievement.montantTotalAide }}</td>
+            <td>{{ calculateProgress(achievement) }}%</td>
+            
+        </tr>
+    </tbody>
+</table>
+</div>
+

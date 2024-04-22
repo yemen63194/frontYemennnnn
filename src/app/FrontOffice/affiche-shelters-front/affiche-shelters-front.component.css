@@ -1,0 +1,5 @@
+.custom-block .custom-block-image {
+    width: 100%; /* Ajustez la largeur de l'image selon vos besoins */
+    height: auto; /* Assurez-vous que la hauteur est ajustée automatiquement pour conserver les proportions de l'image */
+    max-height: 200px;
+}

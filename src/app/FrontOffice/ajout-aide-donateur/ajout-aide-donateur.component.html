@@ -1,0 +1,110 @@
+<div class="templatemo-content-container">
+<div class="container">
+  
+    <h2>Espace Donateur</h2>
+    <form (ngSubmit)="ajoutDonateurAvecAideEtAffectShelter()">
+      <div class="col-lg-12 col-12">
+        <h3 class="mt-1">Personal Info</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-12 mt-2">
+            <div class="form-group">
+                <label for="firstname">Prénom:</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="donateur.firstname" required>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12 mt-2">
+            <div class="form-group">
+                <label for="lastname">Nom:</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="donateur.lastname" required>
+            </div>
+        </div>
+        <div class="col-lg-12 col-12 mt-2">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="donateur.email" required>
+            </div>
+        </div>
+        <div class="col-lg-12 col-12 mt-2">
+            <div class="form-group">
+                <label for="numeroTelephone">Numéro de téléphone:</label>
+                <input type="text" class="form-control" id="numeroTelephone" name="numeroTelephone" [(ngModel)]="donateur.numeroTelephone" required>
+            </div>
+        </div>
+    </div>
+      
+
+      <div class="form-group">
+        <label for="typeAide">Type d'aide:</label>
+        <select class="form-control" id="typeAide" name="typeAide" [(ngModel)]="aide.typeAide" required (change)="onTypeAideChange()">
+          <option value="MONEY">Argent</option>
+          <option value="CLOTHES">Vêtements</option>
+          <option value="VOLUNTEER_HOURS">Heures de bénévolat</option>
+          <option value="MEDICAMENT">Médicaments</option>
+          <option value="ADDITIONAL_SPACE">Espace supplémentaire</option>
+        </select>
+      </div>
+      <!-- <div class="form-group" *ngIf="isDescriptionVisible()">
+        <label for="description">{{ getDescriptionLabel() }}:</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="aide.description" required></textarea>
+      </div> -->
+      <div class="form-group" *ngIf="aide.typeAide === 'MONEY'">
+        <label for="montant">Montant de l'aide:</label>
+        <input type="number" class="form-control" id="montant" name="montant" [(ngModel)]="aide.montant" required>
+      </div>
+
+      <div class="form-group" *ngIf="aide.typeAide === 'CLOTHES'">
+        <label for="quantiteClothes">Quantité de vêtements:</label>
+        <input type="number" class="form-control" id="quantiteClothes" name="quantiteClothes" [(ngModel)]="aide.quantiteClothes" required>
+      </div>
+
+      <div class="form-group" *ngIf="aide.typeAide === 'VOLUNTEER_HOURS'">
+        <label for="duree">Durée de l'aide (en heures):</label>
+        <input type="number" class="form-control" id="duree" name="duree" [(ngModel)]="aide.duree" required>
+        <label for="description">Detail de votre aide :</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="aide.description" required></textarea>
+      </div>
+
+      <div class="form-group" *ngIf="aide.typeAide === 'MEDICAMENT'">
+        <label for="typeMedicament">Type de médicament:</label>
+        <input type="text" class="form-control" id="typeMedicament" name="typeMedicament" [(ngModel)]="aide.typeMedicament" required>
+        <label for="quantiteMedication">Quantité de médicament:</label>
+        <input type="number" class="form-control" id="quantiteMedication" name="quantiteMedication" [(ngModel)]="aide.quantiteMedication" required>
+      </div>
+
+      <div class="form-group" *ngIf="aide.typeAide === 'ADDITIONAL_SPACE'">
+        <label for="surface">Surface supplémentaire (en m²):</label>
+        <input type="number" class="form-control" id="surface" name="surface" [(ngModel)]="aide.surface" required>
+        <label for="address">Adresse de l'espace supplémentaire:</label>
+        <input type="text" class="form-control" id="address" name="address" [(ngModel)]="aide.address" required>
+      </div>
+      <!-- <div class="form-group">
+        <label for="idShelter">ID du Shelter:</label>
+        <input type="number" class="form-control" id="idShelter" name="idShelter" [(ngModel)]="idShelter" required>
+      </div> -->
+
+
+      <div class="form-group">
+        <label for="shelter">Sélectionner un Shelter pour l'aider</label>
+        <select class="form-control" id="shelter" name="shelter" [(ngModel)]="selectedShelterId" (change)="onShelterSelectionChange($event)" required>
+            <option *ngFor="let shelter of shelters" [value]="shelter.idShelter">{{ shelter.nomShelter }}</option>
+        </select>
+    </div>
+
+    <!-- Affichage des caractéristiques du shelter sélectionné -->
+    <div *ngIf="selectedShelter">
+        <h3>{{ selectedShelter.nomShelter }}</h3>
+        <p>Capacité: {{ selectedShelter.capaciteShelter }}</p>
+        <p>Location: {{ selectedShelter.location }}</p>
+        <p>Description: {{ selectedShelter.description }}</p>
+        <p>Téléphone: {{ selectedShelter.tel }}</p>
+        <!-- Ajoutez ici d'autres caractéristiques que vous souhaitez afficher -->
+        <img [src]="selectedShelter.image" alt="Image du Shelter" class="img-thumbnail">    </div>
+
+      <button type="submit" class="btn btn-primary">Confirmer</button>
+    </form>
+    
+  </div>
+</div> 
+
+

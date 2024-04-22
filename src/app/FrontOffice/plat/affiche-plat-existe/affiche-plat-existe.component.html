@@ -1,0 +1,175 @@
+<div class="container-fluid">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BlogApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex me-3 ms-auto">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                        data-bs-target="#addPlatModal">Create Plat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 mb-4" *ngFor="let item of plats; let i = index">
+            <div class="card">
+                        <!-- <app-card-plat [id]="item.idPlat" image="asset('..\..\Picture1.png')"  [desc]="item.descPlat" [nom]="item.nomPlat" (addPlatToList)="fonctionAjouterPlatToRepas($event)"></app-card-plat> -->
+                        <div id="container">  
+  
+                            <!-- Start  Product details -->
+                              <div class="product-details">
+                                
+                                <!--  Product Name -->
+                              <h1>{{item.nomPlat}} </h1>
+                           
+                                
+                              
+                            <!-- The most important information about the product -->
+                                <p class="information">{{item.descPlat}}</p>
+                            
+                                
+                                
+                            <!--    Control -->
+                            <div class="control">
+                              
+                            <!-- Start Button buying -->
+                              <button class="btn">
+                            <!--    the Price -->
+                               <span class="price">{{item.prixPlat}} DT</span>
+                            <!--    shopping cart icon-->
+                               <!-- <span class="shopping-cart"><i class="fa fa-shopping-cart" ></i></span> -->
+                            <!--    Buy Now / ADD to Cart-->
+                               <span class="buy">Buy Now</span>
+                             </button>
+                             <button class="btn" class="btn btn-like" (click)="likePlat(item.idPlat)"><span class="buy">{{item.likePlat}} Like</span></button>
+                             <button class="btn" class="btn btn-dislike" (click)="dislikePlat(item.idPlat)"><span class="buy">{{ item.dislikePlat }} Dislike</span></button>
+                       
+                              <!-- End Button buying -->
+                              
+                            </div>
+                            
+                          
+                            </div>
+                              
+                            <!--  End Product details   -->
+                              
+                              
+                              
+                            <!--  Start product image & Information -->
+                              
+                            <div class="product-image">
+                              
+                              <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/a0/31/7e/un-plat-de-poisson-presente.jpg" alt="Omar Dsoky">
+                              
+                            <!--  product Information-->
+                            <div class="info">
+                              <h2>{{item.desc}}</h2>
+                              <ul>
+                                <li><strong>Sun Needs: </strong>Full Sun</li>
+                                <li><strong>Soil Needs: </strong>Damp</li>
+                                <li><strong>Zones: </strong>9 - 11</li>
+                                <li><strong>Height: </strong>2 - 3 feet</li>
+                                <li><strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+                                <li><strong>Features: </strong>Tolerates heat</li>
+                              </ul>
+                            </div>
+                            </div>
+                            <!--  End product image  -->
+                            
+                            
+                            </div>
+                            <!-- <button (click)="modifierPlat(item.idPlat)" class="btn btn-info">Edit</button>
+                            <button (click)="delete(item.idPlat)" class="btn btn-danger">Delete</button> -->
+                
+        </div>
+
+        <!-- Formulaire d'ajout de plat -->
+        <div class="col-md-6 col-sm-12" *ngIf="isAddingPlat">
+            <h2>Ajouter un plat</h2>
+            <div class="form-group">
+                <label for="nomPlat">Nom du plat</label>
+                <input type="text" class="form-control" id="nomPlat" [(ngModel)]="plat.nomPlat">
+            </div>
+
+            <!-- Ajoutez d'autres champs pour le formulaire ici -->
+
+            <div class="form-group">
+                <label for="descPlat">Description du plat</label>
+                <textarea class="form-control" id="descPlat" [(ngModel)]="plat.descPlat"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Type plat</label>
+                <select class="form-control" [(ngModel)]="plat.typePlat" [ngModelOptions]="{standalone: true}"
+                    multiple>
+                    <option *ngFor="let type of typesPlat" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prixPlat">Prix du plat</label>
+                <input type="number" class="form-control" id="prixPlat" [(ngModel)]="plat.prixPlat">
+            </div>
+            <br>
+            <button class="btn btn-primary" (click)="ajouterPlat()">Ajouter</button>
+            <button class="btn btn-secondary" (click)="AnnulerAjoutPlat()">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal d'ajout de plat -->
+<div class="modal fade" id="addPlatModal" tabindex="-1" aria-labelledby="addPlatModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPlatModalLabel">Ajouter un plat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulaire pour ajouter un plat -->
+                <form>
+                    <div class="mb-3">
+                        <label for="nomPlat" class="form-label">Nom du plat</label>
+                        <input type="text" class="form-control" id="nomPlat" [(ngModel)]="plat.nomPlat">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descPlat">Description du plat</label>
+                        <textarea class="form-control" id="descPlat" [(ngModel)]="plat.descPlat"></textarea>                   
+                    </div>
+                    <div class="mb-3">
+                        <label>Type plat</label>
+                        <select class="form-control" [(ngModel)]="plat.typePlat" [ngModelOptions]="{standalone: true}" multiple>
+                            <option *ngFor="let type of typesPlat" [value]="type">{{type}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prixPlat">Prix du plat</label>
+                        <input type="number" class="form-control" id="prixPlat" [(ngModel)]="plat.prixPlat">
+                    </div>
+                    <div class="mb-3">
+                        <label>Ingrédients</label>
+                        <div *ngFor="let ingredient of ingredients">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" [id]="ingredient.idIngredient" [value]="ingredient" (change)="controleIngredient(ingredient)">
+                                <label class="form-check-label" [for]="ingredient.idIngredient">
+                                    {{ ingredient.nomIngredient }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" (click)="ajouterPlat()">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>

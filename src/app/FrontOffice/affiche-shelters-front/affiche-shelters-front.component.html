@@ -1,0 +1,28 @@
+<div class="templatemo-content-container">
+    <div class="templatemo-content-container">
+        <div class="row">
+            <div *ngFor="let item of shelters" class="col-md-4 mb-4">
+                <div class="custom-block-wrap"> <!-- Ajout de la classe pour envelopper la carte -->
+                    <div class="custom-block"> <!-- Ajout de la classe pour la carte personnalisée -->
+                        <!-- Garder l'image avec la classe existante -->
+                        <img [src]="item.image" class="card-img-top custom-block-image img-fluid" alt="Image du Shelter">
+                        <div class="custom-block-body"> <!-- Ajout de la classe pour le corps personnalisé -->
+                            <!-- Garder le titre avec la classe existante -->
+                            <h5 class="card-title mb-3">{{ item.nomShelter }}</h5>
+                            <!-- Garder les informations avec les classes existantes -->
+                            <p class="card-text">Capacité: {{ item.capaciteShelter }}</p>
+                            <p class="card-text">Location: {{ item.location }}</p>
+                        </div>
+                        <!-- Garder le footer de la carte avec la classe existante -->
+                        <div class="card-footer">
+                            <button (click)="openServicesModal(item.idShelter)" class="btn btn-danger">Read more</button>
+                        </div>
+                       <div>  <button (click)="affecter(item.idShelter)" class="btn btn-primary">Affecter</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
